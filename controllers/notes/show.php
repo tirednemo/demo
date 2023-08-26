@@ -1,6 +1,6 @@
 <?php
 
-use Core\DatabaseFacade;
+use Core\DB;
 
 // $db = App::resolve(Database::class);
 
@@ -10,7 +10,7 @@ $currentUserId = 1;
 //     'id' => $_GET['id']
 // ])->findOrFail();
 
-$note = DatabaseFacade::query('select * from notes where id = :id', [
+$note = DB::query('select * from notes where id = :id', [
     'id' => $_GET['id']
 ])->findOrFail();
 

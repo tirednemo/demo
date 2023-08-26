@@ -1,8 +1,8 @@
 <?php
 
-use Core\DatabaseFacade;
+use Core\DB;
 
-$notes = DatabaseFacade::query('select * from notes where user_id = 1')->get();
+$notes = DB::query('select * from notes where user_id = 1')->get();
 
 view("notes/index.view.php", [
     'heading' => 'My Notes',

@@ -1,16 +1,24 @@
 <?php
- 
- namespace Core;
 
- class Facade{
-    protected static $container;
+namespace Core;
 
-    public static function __callStatic($method, $args){
-            $facadeAccessor = static::getFacadeAccessor();
-            $instance = App::resolve($facadeAccessor);
-            return $instance->$method(...$args);
+class Facade
+{
+    public static function defaultAliases()
+    {
+        return [
+            'DB' => Database::class,
+        ];
     }
-    
-    protected static function getFacadeAccessor(){
+
+    public static function __callStatic($method, $args)
+    {
+        $facadeAccessor = static::getFacadeAccessor();
+        $instance = App::resolve($facadeAccessor);
+        return $instance->$method(...$args);
+    }
+
+    protected static function getFacadeAccessor()
+    {
     }
 }

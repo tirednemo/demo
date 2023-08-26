@@ -1,16 +1,16 @@
 <?php
 
-use Core\DatabaseFacade;
+use Core\DB;
 
 $currentUserId = 1;
 
-$note = DatabaseFacade::query('select * from notes where id = :id', [
+$note = DB::query('select * from notes where id = :id', [
     'id' => $_POST['id']
 ])->findOrFail();
 
 authorize($note['user_id'] === $currentUserId);
 
-DatabaseFacade::query('delete from notes where id = :id', [
+DB::query('delete from notes where id = :id', [
     'id' => $_POST['id']
 ]);
 
